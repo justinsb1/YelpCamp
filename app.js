@@ -42,9 +42,10 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Connect to MongoDB and create DB with name of yelp_camp
-//mongoose.connect(process.env.DATABASEURL);
+//mongodb://localhost/yelp_camp_v4
+mongoose.connect(process.env.DATABASEURL);
 
-console.log(process.env.DATABASEURL);
+//console.log(process.env.DATABASEURL);
 
 // Connect to MongoLab Database
 //  mongoose.connect("mongodb://jbrooks0078:Falcons001@ds159164.mlab.com:59164/yelpcamp");
