@@ -1,0 +1,116 @@
+/* set the background color of the landng page to black */
+body {
+    background-color: #000;
+}
+
+h1 {
+    font-size: 4em;
+    text-shadow: 2px 2px 10px black;
+}
+
+/* id selector (landing-header) */
+#landing-header {
+    /* page has three planes (X,Y,Z) Z is coming forward toward us layering it onto of any other content that has a z index smaller that one */ 
+    z-index: 1;
+    /* to be able to use z index, position must be something other than static */
+    position: relative;
+    /* center the text and buttons horizontally */
+    text-align: center;
+    /* centers the text and buttons vertically, setting it to 40 view height */
+    padding-top: 40vh;
+}
+
+/* selects the h1s with id landing-header and sets the color to white */
+#landing-header h1 {
+    color: #fff;
+}
+
+/* style the ordered lists */
+/* first select the ordered list with its class(slideshow) */
+.slideshow {
+    position: fixed
+    /* set width and height to 100 so it takes up the entire page */
+    width: 100%;
+    height: 100%;
+    /* nudge it up into the top corners of the page using top and left */
+    top: 0;
+    left: 0;
+    /* make sure background images is behind all other content */
+    z-index: 0;
+    /* will remove the bullet points */
+    list-style: none:
+    /* make sure no margins or padding */
+    margin: 0;
+    padding: 0;
+}
+
+/* style individual list items under class(slideshow) */
+.slideshow li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* allow images to take up entire space of page */
+    background-size: cover;
+    /* centers images perfectly on the page */
+    background-position: 50% 50%;
+    /* no images repeating vertically or horizontally */
+    background-repeat: no-repeat;
+    /* start images faded out */
+    opacity: 0;
+    /* make sure images are place behind content */
+    z-index: 0;
+    /* allow us to fade images in and out, can call animation whatever we want*/
+    /* make sure animation last 50s and linear means same speed from beginning to end , infinite tells it to loop infinitely */
+    animation: imageAnimation 50s linear infinite;
+}
+
+
+.slideshow li:nth-child(1) { 
+  background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://i.imgur.com/emvhOnb.jpg);
+  animation-delay: 20s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+  animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+  animation-delay: 40s; 
+}
+
+/* taking the keyframes selector and giving it imageAnimation which is what we named out Animation */
+@keyframes imageAnimation { 
+    /* animation goes from 0%-100& but we are only concerned with these*/
+    /* start animation at 0 and all the way up through 10% we let it fade into an opacity of 1*/
+    0% { 
+        opacity: 0; 
+        /* timing function gives a more smooth transition*/
+        animation-timing-function: ease-in;
+    }
+    /* at 10% we leave the opacity at 1 up until 20%*/
+    10% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+    /* at 20% we fade back out until 30%*/
+    20% {
+        opacity: 1
+    }
+    30% {
+        opacity: 0
+    }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+    opacity: 1;
+}

@@ -1,0 +1,18 @@
+/* Selects all img tags inside of thumbnails */
+.thumbnail img {
+ width: 100%;   
+}
+
+/* Selects just the thumbail itself */
+.thumbnail {
+    padding: 0;
+}
+
+/* Selects the caption full div inside of a thumbnail */
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+#delete-form {
+    display: inline;
+}
