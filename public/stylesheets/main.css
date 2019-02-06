@@ -1,3 +1,27 @@
+/* Sticky footer styles */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* set up fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
 /* Selects all img tags inside of thumbnails */
 .thumbnail img {
  width: 100%;   
@@ -15,4 +39,21 @@
 
 #delete-form {
     display: inline;
+}
+
+/* Google Maps */
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+/* campground show page delete button */
+.delete-form {
+    display: inline-block;
+}
+
+/* flexbox grid fix */
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
 }

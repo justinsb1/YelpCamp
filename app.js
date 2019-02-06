@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var express     = require("express"), 
     mongoose    = require("mongoose"), 
     bodyParser  = require("body-parser"), 
@@ -9,7 +11,12 @@ var express     = require("express"),
     seedDB      = require("./seeds"),
     methodOverride = require("method-override"),
     flash       = require("connect-flash"),
-    app         = express();
+    app         = express(),
+    cookieParser = require("cookie-parser"),
+    session = require("express-session");
+    
+    // configure dotenv
+    require("dotenv").load();
     
     // acquire all routes
 var commentRoutes = require("./routes/comments") ,
@@ -21,6 +28,12 @@ var commentRoutes = require("./routes/comments") ,
 
 // use the override method
 app.use(methodOverride("_method"));
+
+// use the cookieParser method
+app.use(cookieParser("secret"));
+
+// require moment
+app.locals.moment = require("moment");
 
 app.use(require("express-session")({
     // pass in three options to work with passport
@@ -42,13 +55,13 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Connect to MongoDB and create DB with name of yelp_camp
-// mongodb://localhost/yelp_camp_v4
-// mongoose.connect(process.env.DATABASEURL);
+//mongodb://localhost/yelp_camp_v4
+mongoose.connect(process.env.DATABASEURL);
 
-//console.log(process.env.DATABASEURL);
+ console.log(process.env.DATABASEURL);
 
 // Connect to MongoLab Database
-mongoose.connect("mongodb://jbrooks0078:Falcons001@ds159164.mlab.com:59164/yelpcamp");
+//  mongoose.connect("mongodb://jbrooks0078:Falcons001@ds159164.mlab.com:59164/yelpcamp");
 
 // allows to set up for use of passport
 app.use(passport.initialize());
@@ -67,7 +80,7 @@ app.use(function(req, res, next){
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
     next();
-})
+});
 
 // use the routes
 

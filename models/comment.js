@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 
 var commentSchema = mongoose.Schema({
     text: String,
+    createdAt: {type: Date, default: Date.now},
     // add author as an object so you access it in comments
     author: {
         id:  {
