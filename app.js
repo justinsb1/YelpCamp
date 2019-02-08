@@ -56,7 +56,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Connect to MongoDB and create DB with name of yelp_camp
 //mongodb://localhost/yelp_camp_v4
-mongoose.connect(process.env.DATABASEURL, {urlNewUrlParser: true});
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
 
  console.log(process.env.DATABASEURL);
 
